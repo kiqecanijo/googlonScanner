@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import Status from '../status/Status'
+import { presets } from '../pressets'
 
 export const fooLetters = ['u', 'd', 'x', 's', 'm', 'p', 'f']
 export const alphabet = 'sxocqnmwpfyheljrdgui'
@@ -62,9 +63,9 @@ class App extends Component {
   }
 
   // HANDLERS
-  handleBoxChange(event) {
+  handleBoxChange({ target }) {
     //remove jumplines and split
-    const text = event.target.value.replace(/(\r\n|\n|\r)/gm, ' ').split(' ')
+    const text = target.value.replace(/(\r\n|\n|\r)/gm, ' ').split(' ')
     //Prepositions
     const prepositions = getPrepos(text)
     //verbs
@@ -79,7 +80,7 @@ class App extends Component {
     const filteredValues = getPrettyUniques(values)
     this.setState({
       ...this.state,
-      text: event.target.value,
+      text: target.value,
       output: {
         prepositions,
         verbs,
@@ -92,10 +93,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Googlon text scanner</h1>
-
+        <h1>"Googlon text scanner"</h1>
+        <br />
+        {[0, 1, 2, 3, 4].map(number => (
+          <button value={presets[number]} onClick={this.handleBoxChange}>
+            Preset {number + 1}
+          </button>
+        ))}
+        <br />
         <textarea
-          placeholder={'put you googlon text here'}
+          placeholder={'put you googlon text here, or choose a presset '}
           className="code"
           type="text-area"
           rows="20"

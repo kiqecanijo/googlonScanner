@@ -24,3 +24,11 @@ textarea {
 h1 {
   color: #5a5a5a;
 }
+button {
+  background-color: white;
+  border: 1px solid #bbb;
+  padding: 10px;
+  border-radius: 3px;
+  font-weight: bold;
+  margin: 5px;
+}
