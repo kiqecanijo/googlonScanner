@@ -5,3 +5,22 @@
 .App-link {
   color: red;
 }
+
+body {
+  margin: 0px;
+  background-color: #fbfbfb;
+  font-weight: bold;
+  color: gray;
+  font-family: roboto, sans-serif;
+}
+
+textarea {
+  border: 1px solid #bbb;
+  box-shadow: 3px 4px 13px 0px grey;
+  padding: 19px;
+  border-radius: 3px;
+}
+
+h1 {
+  color: #5a5a5a;
+}
