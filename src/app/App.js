@@ -48,16 +48,20 @@ class App extends Component {
 
   //LIFECICLE
   componentDidUpdate() {
-    const alphabet = 'sxocqnmwpfyheljrdgui.'
+    const alphabet = 'sxocqnmwpfyheljrdgui'
     const text = this.state.text.split(' ')
 
     const order = (a, b) => {
       const aIndex = alphabet.indexOf(a.slice(0, 1))
       const bIndex = alphabet.indexOf(b.slice(0, 1))
 
-      return aIndex === bIndex && a.substr(1) + b.substr(1) >= 2
+      return aIndex === bIndex &&
+        a.substr(1).length > 0 &&
+        b.substr(1).length > 0
         ? order(a.substr(1), b.substr(1))
-        : aIndex < bIndex
+        : aIndex >= bIndex
+          ? 1
+          : -1
     }
 
     const orderedText = text.sort((a, b) => order(a, b))
